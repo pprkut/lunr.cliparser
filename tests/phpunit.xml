@@ -9,12 +9,14 @@
             colors="true">
     <testsuites>
         <testsuite name="Lunr Testsuite">
-            <file>tests/system/class.environment.test.php</file>
+            <file>tests/system/EnvironmentTest.php</file>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist>
-            <directory>../system/libraries/</directory>
+            <directory>../src/</directory>
+            <exclude>
+            </exclude>
         </whitelist>
     </filter>
     <logging>

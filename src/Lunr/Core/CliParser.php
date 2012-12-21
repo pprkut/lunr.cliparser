@@ -15,7 +15,7 @@
  * @license    http://lunr.nl/LICENSE MIT License
  */
 
-namespace Lunr\Libraries\Core;
+namespace Lunr\Core;
 
 /**
  * Getopt like command line argument parser. However, it
