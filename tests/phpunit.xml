@@ -16,6 +16,7 @@
         <whitelist>
             <directory>../src/Lunr/</directory>
             <exclude>
+                <directory>../src/Lunr/Shadow/Tests/</directory>
             </exclude>
         </whitelist>
     </filter>
