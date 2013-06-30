@@ -6,9 +6,16 @@
             syntaxCheck="false"
             forceCoversAnnotation="true"
             mapTestClassNameToCoveredClassName="true"
-            colors="true">
+            colors="true"
+            verbose="true">
+    <php>
+        <ini name="zend.enable_gc" value="0" />
+    </php>
     <testsuites>
-        <testsuite name="Lunr Testsuite">
+        <testsuite name="Environment Tests">
+            <file>tests/system/EnvironmentTest.php</file>
+        </testsuite>
+        <testsuite name="Shadow">
             <file>tests/system/EnvironmentTest.php</file>
             <file>src/Lunr/Shadow/Tests/LunrCliParserBaseTest.php</file>
             <file>src/Lunr/Shadow/Tests/LunrCliParserCheckArgumentTest.php</file>
