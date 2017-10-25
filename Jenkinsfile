@@ -32,6 +32,11 @@ pipeline {
             steps{
                 ant_sh('clean')
                 ant_sh('setup')
+                try {
+                    sh "${env.dependency_tool}  install"
+                } catch(error){
+                    echo "WARNING: Couldn't setup dependencies!"
+                }
                 ant_sh('pdepend')
             }
         }
