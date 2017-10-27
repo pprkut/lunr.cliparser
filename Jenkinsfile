@@ -38,7 +38,6 @@ pipeline {
         stage('Clean'){
             steps{
                 ant_sh('clean')
-                ant_sh('setup')
                 dependencies(env.dependency_tool)
                 ant_sh('pdepend')
             }
