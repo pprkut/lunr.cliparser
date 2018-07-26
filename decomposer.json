@@ -1,1 +1,11 @@
-{}
+{
+    "Lunr.Halo": {
+        "url": "https://github.com/M2mobi/lunr.halo.git",
+        "version": "0.6",
+        "revision": "master",
+        "psr4": {
+            "prefix": "Lunr\\Halo",
+            "search-path": "/src/Lunr/Halo/"
+        }
+    }
+}
