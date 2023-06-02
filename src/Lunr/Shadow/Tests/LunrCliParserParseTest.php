@@ -45,9 +45,7 @@ class LunrCliParserParseTest extends LunrCliParserTest
     {
         $_SERVER['argv'] = [ 'script.php', $param ];
 
-        $this->console->expects($this->once())
-                      ->method('cli_println')
-                      ->with($this->equalTo('Invalid parameter given: ' . $param));
+        $this->expectUserWarning('Invalid parameter given: ' . $param);
 
         $value = $this->class->parse();
 
@@ -69,9 +67,6 @@ class LunrCliParserParseTest extends LunrCliParserTest
     {
         $this->set_reflection_property_value('short', $shortopt);
 
-        $this->console->expects($this->never())
-                      ->method('cli_println');
-
         $_SERVER['argv'] = $params;
 
         $value = $this->class->parse();
@@ -92,9 +87,6 @@ class LunrCliParserParseTest extends LunrCliParserTest
     public function testParseValidLongParameters($longopt, $params, $ast): void
     {
         $this->set_reflection_property_value('long', $longopt);
-
-        $this->console->expects($this->never())
-                      ->method('cli_println');
 
         $_SERVER['argv'] = $params;
 

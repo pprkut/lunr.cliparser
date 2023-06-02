@@ -43,9 +43,7 @@ class LunrCliParserCheckArgumentTest extends LunrCliParserTest
 
         $method = $this->get_accessible_reflection_method('check_argument');
 
-        $this->console->expects($this->once())
-                      ->method('cli_println')
-                      ->with($this->equalTo('Superfluous argument: arg'));
+        $this->expectUserNotice('Superfluous argument: arg');
 
         $value = $method->invokeArgs($this->class, [ 'a', 1, 0, 'a' ]);
 

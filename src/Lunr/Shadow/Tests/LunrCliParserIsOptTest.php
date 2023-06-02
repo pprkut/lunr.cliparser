@@ -60,9 +60,7 @@ class LunrCliParserIsOptTest extends LunrCliParserTest
     {
         $method = $this->get_accessible_reflection_method('is_opt');
 
-        $this->console->expects($this->once())
-                      ->method('cli_println')
-                      ->with($this->equalTo('Invalid parameter given: ' . $param));
+        $this->expectUserWarning('Invalid parameter given: ' . $param);
 
         $value = $method->invokeArgs($this->class, [ $param, 1 ]);
 
@@ -82,9 +80,7 @@ class LunrCliParserIsOptTest extends LunrCliParserTest
     {
         $method = $this->get_accessible_reflection_method('is_opt');
 
-        $this->console->expects($this->once())
-                      ->method('cli_println')
-                      ->with($this->equalTo('Invalid parameter given: ' . $param));
+        $this->expectUserWarning('Invalid parameter given: ' . $param);
 
         $method->invokeArgs($this->class, [ $param, 1 ]);
 
@@ -100,9 +96,7 @@ class LunrCliParserIsOptTest extends LunrCliParserTest
     {
         $method = $this->get_accessible_reflection_method('is_opt');
 
-        $this->console->expects($this->once())
-                      ->method('cli_println')
-                      ->with($this->equalTo('Superfluous argument: first'));
+        $this->expectUserNotice('Superfluous argument: first');
 
         $value = $method->invokeArgs($this->class, [ 'first', 1, TRUE ]);
 

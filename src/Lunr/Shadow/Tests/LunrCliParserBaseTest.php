@@ -21,14 +21,6 @@ class LunrCliParserBaseTest extends LunrCliParserTest
 {
 
     /**
-     * Test that the Console class is passed correctly.
-     */
-    public function testConsoleIsPassedCorrectly(): void
-    {
-        $this->assertPropertySame('console', $this->console);
-    }
-
-    /**
      * Test that the short options string is passed correctly.
      */
     public function testShortOptsIsPassedCorrectly(): void

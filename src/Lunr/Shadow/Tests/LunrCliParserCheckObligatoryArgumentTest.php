@@ -109,9 +109,7 @@ class LunrCliParserCheckObligatoryArgumentTest extends LunrCliParserTest
 
         $method = $this->get_accessible_reflection_method('check_argument');
 
-        $this->console->expects($this->once())
-                      ->method('cli_println')
-                      ->with($this->equalTo('Missing argument for -b'));
+        $this->expectUserWarning('Missing argument for -b');
 
         $value = $method->invokeArgs($this->class, [ 'b', 1, 0, 'b:' ]);
 
@@ -131,9 +129,7 @@ class LunrCliParserCheckObligatoryArgumentTest extends LunrCliParserTest
 
         $method = $this->get_accessible_reflection_method('check_argument');
 
-        $this->console->expects($this->once())
-                      ->method('cli_println')
-                      ->with($this->equalTo('Missing argument for -b'));
+        $this->expectUserWarning('Missing argument for -b');
 
         $value = $method->invokeArgs($this->class, [ 'b', 1, 0, 'b:' ]);
 

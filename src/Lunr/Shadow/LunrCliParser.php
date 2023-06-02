@@ -59,19 +59,12 @@ class LunrCliParser implements CliParserInterface
     private $error;
 
     /**
-     * Shared instance of the console class.
-     * @var Console
-     */
-    protected $console;
-
-    /**
      * Constructor.
      *
-     * @param Console $console   Shared instance of the Console class
      * @param string  $shortopts List of supported short arguments
      * @param array   $longopts  List of supported long arguments (optional)
      */
-    public function __construct(Console $console, string $shortopts, array $longopts = [])
+    public function __construct(string $shortopts, array $longopts = [])
     {
         $this->short   = $shortopts;
         $this->long    = $longopts;
@@ -79,7 +72,6 @@ class LunrCliParser implements CliParserInterface
         $this->checked = [];
         $this->ast     = [];
         $this->error   = FALSE;
-        $this->console = $console;
     }
 
     /**
@@ -93,7 +85,6 @@ class LunrCliParser implements CliParserInterface
         unset($this->checked);
         unset($this->ast);
         unset($this->error);
-        unset($this->console);
     }
 
     /**
@@ -165,7 +156,7 @@ class LunrCliParser implements CliParserInterface
         }
         elseif ($toplevel)
         {
-            $this->console->cli_println('Superfluous argument: ' . $opt);
+            trigger_error('Superfluous argument: ' . $opt, E_USER_NOTICE);
         }
 
         return FALSE;
@@ -185,7 +176,7 @@ class LunrCliParser implements CliParserInterface
 
         if ($pos === FALSE)
         {
-            $this->console->cli_println('Invalid parameter given: ' . $opt);
+            trigger_error('Invalid parameter given: ' . $opt, E_USER_WARNING);
             $this->error = TRUE;
             return FALSE;
         }
@@ -226,7 +217,7 @@ class LunrCliParser implements CliParserInterface
 
         if ($match === FALSE)
         {
-            $this->console->cli_println('Invalid parameter given: ' . $opt);
+            trigger_error('Invalid parameter given: ' . $opt, E_USER_WARNING);
             $this->error = TRUE;
             return FALSE;
         }
@@ -282,19 +273,19 @@ class LunrCliParser implements CliParserInterface
                 }
                 elseif ($type == ':')
                 {
-                    $this->console->cli_println('Missing argument for -' . $opt);
+                    trigger_error('Missing argument for -' . $opt, E_USER_WARNING);
                     $this->error = TRUE;
                 }
             }
             elseif ($type == ':')
             {
-                $this->console->cli_println('Missing argument for -' . $opt);
+                trigger_error('Missing argument for -' . $opt, E_USER_WARNING);
                 $this->error = TRUE;
             }
         }
         elseif (count($this->args) > $next && !strpos($a, $opt))
         {
-            $this->console->cli_println('Superfluous argument: ' . $this->args[$next]);
+            trigger_error('Superfluous argument: ' . $this->args[$next], E_USER_NOTICE);
             return TRUE;
         }
 

@@ -109,9 +109,6 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTest
 
         $method = $this->get_accessible_reflection_method('check_argument');
 
-        $this->console->expects($this->never())
-                      ->method('cli_println');
-
         $value = $method->invokeArgs($this->class, [ 'b', 1, 0, 'b;' ]);
 
         $this->assertFalse($value);
@@ -129,9 +126,6 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTest
         $this->set_reflection_property_value('ast', [ 'b' => [] ]);
 
         $method = $this->get_accessible_reflection_method('check_argument');
-
-        $this->console->expects($this->never())
-                      ->method('cli_println');
 
         $value = $method->invokeArgs($this->class, [ 'b', 1, 0, 'b;' ]);
 
