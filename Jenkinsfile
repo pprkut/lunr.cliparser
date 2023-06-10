@@ -36,7 +36,7 @@ pipeline {
                         doGenerateSubmoduleConfigurations: false,
                         extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: '../lunr-coding-standard']],
                         submoduleCfg: [],
-                        userRemoteConfigs: [[url: 'https://github.com/M2Mobi/lunr-coding-standard.git']]
+                        userRemoteConfigs: [[url: 'https://github.com/lunr-php/lunr-coding-standard.git']]
                     ]
                 checkout scm
             }
@@ -126,7 +126,7 @@ pipeline {
                 withSonarQubeEnv('M2mobi') {
                     sh """sonar-scanner \\
                             -Dsonar.projectKey=${ACCOUNT_KEY}:backend:${PROJECT_SLUG} \\
-                            -Dsonar.projectName=${currentBuild.rawBuild.project.parent.displayName.capitalize()} \\
+                            -Dsonar.projectName=Lunr.CliParser \\
                             -Dsonar.sources=src/ \\
                             -Dsonar.php.tests.reportPath=build/logs/junit.xml \\
                             -Dsonar.php.coverage.reportPaths=build/logs/clover.xml"""
