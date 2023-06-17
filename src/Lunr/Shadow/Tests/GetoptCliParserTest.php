@@ -46,7 +46,7 @@ abstract class GetoptCliParserTest extends LunrBaseTest
      *
      * @return array $values Array of command line argument values.
      */
-    public function valueProvider()
+    public static function valueProvider()
     {
         $values   = [];
         $values[] = [ 'string' ];

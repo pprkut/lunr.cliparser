@@ -45,7 +45,7 @@ abstract class LunrCliParserTest extends LunrBaseTest
      *
      * @return array $params Array of invalid parameters
      */
-    public function invalidParameterProvider(): array
+    public static function invalidParameterProvider(): array
     {
         $params   = [];
         $params[] = [ '-' ];
@@ -59,7 +59,7 @@ abstract class LunrCliParserTest extends LunrBaseTest
      *
      * @return array $params Array of valid parameters
      */
-    public function validShortParameterProvider(): array
+    public static function validShortParameterProvider(): array
     {
         $params   = [];
         $params[] = [ 'a', [ 'test.php', '-a' ], [ 'a' => [] ] ];
@@ -78,7 +78,7 @@ abstract class LunrCliParserTest extends LunrBaseTest
      *
      * @return array $params Array of valid parameters
      */
-    public function validLongParameterProvider(): array
+    public static function validLongParameterProvider(): array
     {
         $params   = [];
         $params[] = [ [ 'first' ], [ 'test.php', '--first' ], [ 'first' => [] ] ];
