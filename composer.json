@@ -1,4 +1,10 @@
 {
+  "name": "lunr/cliparser",
+  "description": "Lunr.CliParser is a library for parsing command line arguments.",
+  "keywords": [ "cli", "getopt" ],
+  "homepage": "https://github.com/lunr-php/lunr.cliparser",
+  "type": "library",
+  "license": "MIT",
   "require": {
     "php": ">=7.4",
     "lunr/halo": "dev-master"
