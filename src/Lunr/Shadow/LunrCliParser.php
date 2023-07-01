@@ -61,8 +61,8 @@ class LunrCliParser implements CliParserInterface
     /**
      * Constructor.
      *
-     * @param string  $shortopts List of supported short arguments
-     * @param array   $longopts  List of supported long arguments (optional)
+     * @param string $shortopts List of supported short arguments
+     * @param array  $longopts  List of supported long arguments (optional)
      */
     public function __construct(string $shortopts, array $longopts = [])
     {
