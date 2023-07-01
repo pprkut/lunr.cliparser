@@ -19,16 +19,16 @@ interface CliParserInterface
     /**
      * Parse command line parameters.
      *
-     * @return array $args Array of parameters and their arguments
+     * @return array<string,mixed[]> $args Array of parameters and their arguments
      */
-    public function parse();
+    public function parse(): array;
 
     /**
      * Check whether the parsed command line was valid or not.
      *
      * @return bool $invalid TRUE if the command line was invalid, FALSE otherwise
      */
-    public function is_invalid_commandline();
+    public function is_invalid_commandline(): bool;
 
 }
 

@@ -18,13 +18,13 @@ class GetoptCliParser implements CliParserInterface
 
     /**
      * String defining all possible short options (1 character)
-     * @var String
+     * @var string
      */
     private $short;
 
     /**
      * Array containing all possible long options
-     * @var array
+     * @var array<string,string>
      */
     private $long;
 
@@ -37,8 +37,8 @@ class GetoptCliParser implements CliParserInterface
     /**
      * Constructor.
      *
-     * @param string $shortopts List of supported short arguments
-     * @param array  $longopts  List of supported long arguments (optional)
+     * @param string               $shortopts List of supported short arguments
+     * @param array<string,string> $longopts  List of supported long arguments (optional)
      */
     public function __construct(string $shortopts, array $longopts = [])
     {
@@ -60,7 +60,7 @@ class GetoptCliParser implements CliParserInterface
     /**
      * Parse command line arguments.
      *
-     * @return array The ast of the parsed arguments
+     * @return array<string,mixed[]> The ast of the parsed arguments
      */
     public function parse(): array
     {
@@ -92,7 +92,7 @@ class GetoptCliParser implements CliParserInterface
      *
      * @param mixed $value Parsed command line argument
      *
-     * @return array Wrapped argument
+     * @return mixed[] Wrapped argument
      */
     protected function wrap_argument($value): array
     {

@@ -24,31 +24,31 @@ class LunrCliParser implements CliParserInterface
 
     /**
      * String defining all possible short options (1 character)
-     * @var String
+     * @var string
      */
     private $short;
 
     /**
      * Array containing all possible long options
-     * @var array
+     * @var array<string,string>
      */
     private $long;
 
     /**
      * The arguments passed on command line
-     * @var array
+     * @var string[]
      */
     private $args;
 
     /**
      * Checked/Processed arguments
-     * @var array
+     * @var string[]
      */
     private $checked;
 
     /**
      * "Abstract Syntax Tree" of the passed arguments
-     * @var array
+     * @var array<string,mixed[]>
      */
     private $ast;
 
@@ -61,8 +61,8 @@ class LunrCliParser implements CliParserInterface
     /**
      * Constructor.
      *
-     * @param string $shortopts List of supported short arguments
-     * @param array  $longopts  List of supported long arguments (optional)
+     * @param string               $shortopts List of supported short arguments
+     * @param array<string,string> $longopts  List of supported long arguments (optional)
      */
     public function __construct(string $shortopts, array $longopts = [])
     {
@@ -90,7 +90,7 @@ class LunrCliParser implements CliParserInterface
     /**
      * Parse command line parameters.
      *
-     * @return array Array of parameters and their arguments
+     * @return array<string,mixed[]> Array of parameters and their arguments
      */
     public function parse(): array
     {
@@ -133,12 +133,12 @@ class LunrCliParser implements CliParserInterface
 
         if (isset($opt[0]) && $opt[0] == '-')
         {
-            $param = substr($opt, 1);
-
-            if ($param === FALSE)
+            if (strlen($opt) < 1)
             {
                 return $this->is_valid_short($opt, $index);
             }
+
+            $param = substr($opt, 1);
 
             if (isset($param[0]) && $param[0] != '-')
             {
@@ -197,6 +197,7 @@ class LunrCliParser implements CliParserInterface
     private function is_valid_long(string $opt, int $index): bool
     {
         $match = FALSE;
+        $args  = '';
 
         foreach ($this->long as $key => $arg)
         {
