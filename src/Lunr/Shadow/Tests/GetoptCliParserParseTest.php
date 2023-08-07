@@ -70,7 +70,7 @@ class GetoptCliParserParseTest extends GetoptCliParserTest
      */
     public function testParseReturnsEmptyArrayOnError(): void
     {
-        $this->mock_function('getopt', function (){return FALSE;});
+        $this->mock_function('getopt', function () { return FALSE; });
 
         $value = $this->class->parse();
 
@@ -85,7 +85,7 @@ class GetoptCliParserParseTest extends GetoptCliParserTest
      */
     public function testParseSetsErrorTrueOnError(): void
     {
-        $this->mock_function('getopt', function (){return FALSE;});
+        $this->mock_function('getopt', function () { return FALSE; });
 
         $this->class->parse();
 
@@ -100,7 +100,7 @@ class GetoptCliParserParseTest extends GetoptCliParserTest
      */
     public function testParseReturnsAstOnSuccess(): void
     {
-        $this->mock_function('getopt', function (){ return [ 'a' => FALSE, 'b' => 'arg' ]; });
+        $this->mock_function('getopt', function () { return [ 'a' => FALSE, 'b' => 'arg' ]; });
 
         $value = $this->class->parse();
 
