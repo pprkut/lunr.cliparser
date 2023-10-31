@@ -24,12 +24,19 @@ abstract class LunrCliParserTest extends LunrBaseTest
 {
 
     /**
+     * Instance of the tested class.
+     * @var LunrCliParser
+     */
+    protected LunrCliParser $class;
+
+    /**
      * Test case constructor.
      */
     public function setUp(): void
     {
-        $this->class      = new LunrCliParser('ab:c;d:;e::', [ 'first', 'second:', 'third;', 'fourth:;', 'fifth::' ]);
-        $this->reflection = new ReflectionClass('Lunr\Shadow\LunrCliParser');
+        $this->class = new LunrCliParser('ab:c;d:;e::', [ 'first', 'second:', 'third;', 'fourth:;', 'fifth::' ]);
+
+        parent::baseSetUp($this->class);
     }
 
     /**
@@ -37,6 +44,8 @@ abstract class LunrCliParserTest extends LunrBaseTest
      */
     public function tearDown(): void
     {
+        unset($this->class);
+
         parent::tearDown();
     }
 

@@ -24,12 +24,19 @@ abstract class GetoptCliParserTest extends LunrBaseTest
 {
 
     /**
+     * Instance of the tested class.
+     * @var GetoptCliParser
+     */
+    protected GetoptCliParser $class;
+
+    /**
      * Test case constructor.
      */
     public function setUp(): void
     {
-        $this->class      = new GetoptCliParser('ab:c::', [ 'first', 'second:', 'third::' ]);
-        $this->reflection = new ReflectionClass('Lunr\Shadow\GetoptCliParser');
+        $this->class = new GetoptCliParser('ab:c::', [ 'first', 'second:', 'third::' ]);
+
+        parent::baseSetUp($this->class);
     }
 
     /**
@@ -38,7 +45,8 @@ abstract class GetoptCliParserTest extends LunrBaseTest
     public function tearDown(): void
     {
         unset($this->class);
-        unset($this->reflection);
+
+        parent::tearDown();
     }
 
     /**
