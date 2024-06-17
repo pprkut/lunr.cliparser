@@ -5,6 +5,7 @@
         "psr4": {
             "prefix": "Lunr\\Halo",
             "search-path": "/src/Lunr/Halo/"
-        }
+        },
+        "development-only": true
     }
 }
