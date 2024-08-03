@@ -10,9 +10,8 @@
 
 namespace Lunr\Shadow\Tests;
 
-use Lunr\Shadow\LunrCliParser;
 use Lunr\Halo\LunrBaseTest;
-use ReflectionClass;
+use Lunr\Shadow\LunrCliParser;
 
 /**
  * This class contains common setup routines, providers
