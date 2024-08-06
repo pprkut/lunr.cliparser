@@ -10,8 +10,6 @@
 
 namespace Lunr\Shadow\Tests;
 
-use Lunr\Halo\PsrLoggerTestTrait;
-
 /**
  * This class contains base test methods for the LunrCliParser class.
  *
