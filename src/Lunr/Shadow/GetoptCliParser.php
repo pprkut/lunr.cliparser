@@ -12,6 +12,8 @@ namespace Lunr\Shadow;
 
 /**
  * Getopt command line argument parser.
+ *
+ * @phpstan-import-type CliParameters from CliParserInterface
  */
 class GetoptCliParser implements CliParserInterface
 {
@@ -60,7 +62,7 @@ class GetoptCliParser implements CliParserInterface
     /**
      * Parse command line arguments.
      *
-     * @return array<string,mixed[]> The ast of the parsed arguments
+     * @return CliParameters The ast of the parsed arguments
      */
     public function parse(): array
     {
@@ -90,11 +92,11 @@ class GetoptCliParser implements CliParserInterface
     /**
      * Wrap parsed command line arguments in a unified format.
      *
-     * @param mixed $value Parsed command line argument
+     * @param bool|string|list<bool>|list<string> $value Parsed command line argument
      *
-     * @return mixed[] Wrapped argument
+     * @return list<bool>|list<string> Wrapped argument
      */
-    protected function wrap_argument($value): array
+    protected function wrap_argument(bool|string|array $value): array
     {
         if ($value === FALSE)
         {

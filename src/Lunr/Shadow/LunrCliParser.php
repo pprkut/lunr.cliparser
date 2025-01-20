@@ -20,6 +20,8 @@ use UnexpectedValueException;
  * only allows one argument per command line option, this
  * class allows more than one argument, as well as optional
  * and obligatory arguments mixed
+ *
+ * @phpstan-import-type CliParameters from CliParserInterface
  */
 class LunrCliParser implements CliParserInterface
 {
@@ -50,7 +52,7 @@ class LunrCliParser implements CliParserInterface
 
     /**
      * "Abstract Syntax Tree" of the passed arguments
-     * @var array<string,mixed[]>
+     * @var CliParameters
      */
     private $ast;
 
@@ -92,7 +94,7 @@ class LunrCliParser implements CliParserInterface
     /**
      * Parse command line parameters.
      *
-     * @return array<string,mixed[]> Array of parameters and their arguments
+     * @return CliParameters Array of parameters and their arguments
      */
     public function parse(): array
     {

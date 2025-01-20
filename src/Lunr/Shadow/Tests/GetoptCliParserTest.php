@@ -60,7 +60,6 @@ abstract class GetoptCliParserTest extends LunrBaseTest
         $values[] = [ 1 ];
         $values[] = [ 1.1 ];
         $values[] = [ TRUE ];
-        $values[] = [ NULL ];
 
         return $values;
     }
