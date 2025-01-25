@@ -72,9 +72,7 @@ class GetoptCliParser implements CliParserInterface
             return [];
         }
 
-        $ast = array_map([ $this, 'wrap_argument' ], $raw);
-
-        return $ast;
+        return array_map([ $this, 'wrap_argument' ], $raw);
     }
 
     /**
