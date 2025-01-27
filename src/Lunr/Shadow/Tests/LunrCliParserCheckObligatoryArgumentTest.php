@@ -43,9 +43,9 @@ class LunrCliParserCheckObligatoryArgumentTest extends LunrCliParserTest
      */
     public function testCheckArgumentReturnsTrueForValidParameterWithTwoArgs(): void
     {
-        $args = $this->set_reflection_property_value('args', [ 'test.php', '-e', 'arg1', 'arg2' ]);
+        $this->set_reflection_property_value('args', [ 'test.php', '-e', 'arg1', 'arg2' ]);
 
-        $ast = $this->set_reflection_property_value('ast', [ 'e' => [] ]);
+        $this->set_reflection_property_value('ast', [ 'e' => [] ]);
 
         $method = $this->get_accessible_reflection_method('check_argument');
 
@@ -103,9 +103,9 @@ class LunrCliParserCheckObligatoryArgumentTest extends LunrCliParserTest
      */
     public function testCheckArgumentReturnsFalseForArgumentMissing(): void
     {
-        $args = $this->set_reflection_property_value('args', [ 'test.php', '-b' ]);
+        $this->set_reflection_property_value('args', [ 'test.php', '-b' ]);
 
-        $ast = $this->set_reflection_property_value('ast', [ 'b' => [] ]);
+        $this->set_reflection_property_value('ast', [ 'b' => [] ]);
 
         $method = $this->get_accessible_reflection_method('check_argument');
 
