@@ -35,18 +35,18 @@ class GetoptCliParserParseTest extends GetoptCliParserTestCase
     /**
      * Test that wrap_argument() replaces a FALSE value with an empty array.
      *
-     * @param mixed $cli_value Value to wrap
+     * @param mixed $cliValue Value to wrap
      *
      * @dataProvider valueProvider
      * @covers       Lunr\Shadow\GetoptCliParser::wrap_argument
      */
-    public function testWrapArgumentReturnsValueWrappedInArray($cli_value): void
+    public function testWrapArgumentReturnsValueWrappedInArray($cliValue): void
     {
         $method = $this->getReflectionMethod('wrap_argument');
 
-        $value = $method->invokeArgs($this->class, [ $cli_value ]);
+        $value = $method->invokeArgs($this->class, [ $cliValue ]);
 
-        $this->assertEquals([ $cli_value ], $value);
+        $this->assertEquals([ $cliValue ], $value);
     }
 
     /**
