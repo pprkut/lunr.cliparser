@@ -11,7 +11,7 @@
 namespace Lunr\Shadow\Tests;
 
 /**
- * This class contains test methods for check_arguments() in the LunrCliParser class.
+ * This class contains test methods for checkArguments() in the LunrCliParser class.
  *
  * @covers Lunr\Shadow\LunrCliParser
  */
@@ -19,9 +19,9 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
 {
 
     /**
-     * Test that check_argument() returns TRUE for a valid parameter with one argument.
+     * Test that checkArgument() returns TRUE for a valid parameter with one argument.
      *
-     * @covers Lunr\Shadow\LunrCliParser::check_argument
+     * @covers Lunr\Shadow\LunrCliParser::checkArgument
      */
     public function testCheckArgumentReturnsTrueForValidParameterWithOneArg(): void
     {
@@ -29,7 +29,7 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
 
         $this->setReflectionPropertyValue('ast', [ 'c' => [] ]);
 
-        $method = $this->getReflectionMethod('check_argument');
+        $method = $this->getReflectionMethod('checkArgument');
 
         $value = $method->invokeArgs($this->class, [ 'c', 1, 0, 'c;' ]);
 
@@ -37,9 +37,9 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that check_argument() returns TRUE for a valid parameter with one argument.
+     * Test that checkArgument() returns TRUE for a valid parameter with one argument.
      *
-     * @covers Lunr\Shadow\LunrCliParser::check_argument
+     * @covers Lunr\Shadow\LunrCliParser::checkArgument
      */
     public function testCheckArgumentReturnsTrueForValidParameterWithTwoArgs(): void
     {
@@ -47,7 +47,7 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
 
         $this->setReflectionPropertyValue('ast', [ 'f' => [] ]);
 
-        $method = $this->getReflectionMethod('check_argument');
+        $method = $this->getReflectionMethod('checkArgument');
 
         $value = $method->invokeArgs($this->class, [ 'f', 1, 0, 'f;;' ]);
 
@@ -55,9 +55,9 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that check_argument() appends first argument to ast.
+     * Test that checkArgument() appends first argument to ast.
      *
-     * @covers Lunr\Shadow\LunrCliParser::check_argument
+     * @covers Lunr\Shadow\LunrCliParser::checkArgument
      */
     public function testCheckArgumentAppendsFirstArgumentToAst(): void
     {
@@ -65,7 +65,7 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
 
         $this->setReflectionPropertyValue('ast', [ 'c' => [] ]);
 
-        $method = $this->getReflectionMethod('check_argument');
+        $method = $this->getReflectionMethod('checkArgument');
 
         $method->invokeArgs($this->class, [ 'c', 1, 0, 'c;' ]);
 
@@ -76,9 +76,9 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that check_argument() appends first argument to ast.
+     * Test that checkArgument() appends first argument to ast.
      *
-     * @covers Lunr\Shadow\LunrCliParser::check_argument
+     * @covers Lunr\Shadow\LunrCliParser::checkArgument
      */
     public function testCheckArgumentAppendsSecondArgumentToAst(): void
     {
@@ -86,7 +86,7 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
 
         $this->setReflectionPropertyValue('ast', [ 'f' => [] ]);
 
-        $method = $this->getReflectionMethod('check_argument');
+        $method = $this->getReflectionMethod('checkArgument');
 
         $method->invokeArgs($this->class, [ 'f', 1, 0, 'f;;' ]);
 
@@ -97,9 +97,9 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that check_argument() returns FALSE when the argument is missing.
+     * Test that checkArgument() returns FALSE when the argument is missing.
      *
-     * @covers Lunr\Shadow\LunrCliParser::check_argument
+     * @covers Lunr\Shadow\LunrCliParser::checkArgument
      */
     public function testCheckArgumentReturnsFalseForArgumentMissing(): void
     {
@@ -107,7 +107,7 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
 
         $this->setReflectionPropertyValue('ast', [ 'b' => [] ]);
 
-        $method = $this->getReflectionMethod('check_argument');
+        $method = $this->getReflectionMethod('checkArgument');
 
         $value = $method->invokeArgs($this->class, [ 'b', 1, 0, 'b;' ]);
 
@@ -115,9 +115,9 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that check_argument() returns FALSE when the argument is missing.
+     * Test that checkArgument() returns FALSE when the argument is missing.
      *
-     * @covers Lunr\Shadow\LunrCliParser::check_argument
+     * @covers Lunr\Shadow\LunrCliParser::checkArgument
      */
     public function testCheckArgumentReturnsFalseForArgumentMissingWithAnotherParameterAfter(): void
     {
@@ -125,7 +125,7 @@ class LunrCliParserCheckOptionalArgumentTest extends LunrCliParserTestCase
 
         $this->setReflectionPropertyValue('ast', [ 'b' => [] ]);
 
-        $method = $this->getReflectionMethod('check_argument');
+        $method = $this->getReflectionMethod('checkArgument');
 
         $value = $method->invokeArgs($this->class, [ 'b', 1, 0, 'b;' ]);
 

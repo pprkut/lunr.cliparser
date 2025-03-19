@@ -77,11 +77,23 @@ class LunrCliParserBaseTest extends LunrCliParserTestCase
      *
      * @covers Lunr\Shadow\LunrCliParser::is_invalid_commandline
      */
-    public function testIsInvalidCommandLineReturnsError(): void
+    public function testDeprecatedIsInvalidCommandLineReturnsError(): void
     {
         $value = $this->getReflectionPropertyValue('error');
 
         $this->assertEquals($value, $this->class->is_invalid_commandline());
+    }
+
+    /**
+     * Test that isInvalidCommandline() returns the value of error.
+     *
+     * @covers Lunr\Shadow\LunrCliParser::isInvalidCommandline
+     */
+    public function testIsInvalidCommandLineReturnsError(): void
+    {
+        $value = $this->getReflectionPropertyValue('error');
+
+        $this->assertEquals($value, $this->class->isInvalidCommandline());
     }
 
 }

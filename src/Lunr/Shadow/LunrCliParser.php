@@ -122,7 +122,7 @@ class LunrCliParser implements CliParserInterface
         {
             if (!in_array($arg, $this->checked) && $index != 0)
             {
-                $this->is_opt($arg, $index, TRUE);
+                $this->isOpt($arg, $index, TRUE);
             }
         }
 
@@ -132,9 +132,21 @@ class LunrCliParser implements CliParserInterface
     /**
      * Check whether the parsed command line was valid or not.
      *
+     * @deprecated Use isInvalidCommandline() instead
+     *
      * @return bool TRUE if the command line was invalid, FALSE otherwise
      */
     public function is_invalid_commandline(): bool
+    {
+        return $this->isInvalidCommandline();
+    }
+
+    /**
+     * Check whether the parsed command line was valid or not.
+     *
+     * @return bool TRUE if the command line was invalid, FALSE otherwise
+     */
+    public function isInvalidCommandline(): bool
     {
         return $this->error;
     }
@@ -149,7 +161,7 @@ class LunrCliParser implements CliParserInterface
      *
      * @return bool Success or Failure
      */
-    private function is_opt(string $opt, int $index, bool $toplevel = FALSE): bool
+    private function isOpt(string $opt, int $index, bool $toplevel = FALSE): bool
     {
         array_push($this->checked, $opt);
 
@@ -157,23 +169,23 @@ class LunrCliParser implements CliParserInterface
         {
             if (strlen($opt) < 1)
             {
-                return $this->is_valid_short($opt, $index);
+                return $this->isValidShort($opt, $index);
             }
 
             $param = substr($opt, 1);
 
             if (isset($param[0]) && $param[0] != '-')
             {
-                return $this->is_valid_short($param, $index);
+                return $this->isValidShort($param, $index);
             }
 
             if (strlen($param) > 1)
             {
-                return $this->is_valid_long(substr($param, 1), $index);
+                return $this->isValidLong(substr($param, 1), $index);
             }
             else
             {
-                return $this->is_valid_long($opt, $index);
+                return $this->isValidLong($opt, $index);
             }
         }
         elseif ($toplevel)
@@ -192,7 +204,7 @@ class LunrCliParser implements CliParserInterface
      *
      * @return bool Success or Failure
      */
-    private function is_valid_short(string $opt, int $index): bool
+    private function isValidShort(string $opt, int $index): bool
     {
         $pos = strpos($this->short, $opt);
 
@@ -205,7 +217,7 @@ class LunrCliParser implements CliParserInterface
 
         $this->ast[$opt] = [];
 
-        return $this->check_argument($opt, $index, $pos, $this->short);
+        return $this->checkArgument($opt, $index, $pos, $this->short);
     }
 
     /**
@@ -216,7 +228,7 @@ class LunrCliParser implements CliParserInterface
      *
      * @return bool Success or Failure
      */
-    private function is_valid_long(string $opt, int $index): bool
+    private function isValidLong(string $opt, int $index): bool
     {
         $match = FALSE;
         $args  = '';
@@ -247,7 +259,7 @@ class LunrCliParser implements CliParserInterface
 
         $this->ast[$opt] = [];
 
-        return $this->check_argument($opt, $index, strlen($opt) - 1, $this->long[$args]);
+        return $this->checkArgument($opt, $index, strlen($opt) - 1, $this->long[$args]);
     }
 
     /**
@@ -261,7 +273,7 @@ class LunrCliParser implements CliParserInterface
      *
      * @return bool Success or Failure
      */
-    private function check_argument(string $opt, int $index, int $pos, string $a): bool
+    private function checkArgument(string $opt, int $index, int $pos, string $a): bool
     {
         $next = $index + 1;
 
@@ -276,7 +288,7 @@ class LunrCliParser implements CliParserInterface
 
             if (count($this->args) > $next && strlen($this->args[$next]) != 0)
             {
-                if (!$this->is_opt($this->args[$next], $next) && $this->args[$next][0] != '-')
+                if (!$this->isOpt($this->args[$next], $next) && $this->args[$next][0] != '-')
                 {
                     array_push($this->ast[$opt], $this->args[$next]);
 
@@ -287,7 +299,7 @@ class LunrCliParser implements CliParserInterface
 
                     if (($type == ':' && $a[$pos + 2] == ':') || $a[$pos + 2] == ';')
                     {
-                        return $this->check_argument($opt, $next, $pos + 1, $a);
+                        return $this->checkArgument($opt, $next, $pos + 1, $a);
                     }
                     else
                     {

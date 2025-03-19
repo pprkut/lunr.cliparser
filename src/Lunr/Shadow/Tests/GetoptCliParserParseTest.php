@@ -19,13 +19,13 @@ class GetoptCliParserParseTest extends GetoptCliParserTestCase
 {
 
     /**
-     * Test that wrap_argument() replaces a FALSE value with an empty array.
+     * Test that wrapArgument() replaces a FALSE value with an empty array.
      *
-     * @covers Lunr\Shadow\GetoptCliParser::wrap_argument
+     * @covers Lunr\Shadow\GetoptCliParser::wrapArgument
      */
     public function testWrapArgumentReturnsEmptyArrayForFalse(): void
     {
-        $method = $this->getReflectionMethod('wrap_argument');
+        $method = $this->getReflectionMethod('wrapArgument');
 
         $value = $method->invokeArgs($this->class, [ FALSE ]);
 
@@ -33,16 +33,16 @@ class GetoptCliParserParseTest extends GetoptCliParserTestCase
     }
 
     /**
-     * Test that wrap_argument() replaces a FALSE value with an empty array.
+     * Test that wrapArgument() replaces a FALSE value with an empty array.
      *
      * @param mixed $cliValue Value to wrap
      *
      * @dataProvider valueProvider
-     * @covers       Lunr\Shadow\GetoptCliParser::wrap_argument
+     * @covers       Lunr\Shadow\GetoptCliParser::wrapArgument
      */
     public function testWrapArgumentReturnsValueWrappedInArray($cliValue): void
     {
-        $method = $this->getReflectionMethod('wrap_argument');
+        $method = $this->getReflectionMethod('wrapArgument');
 
         $value = $method->invokeArgs($this->class, [ $cliValue ]);
 
@@ -50,13 +50,13 @@ class GetoptCliParserParseTest extends GetoptCliParserTestCase
     }
 
     /**
-     * Test that wrap_argument() does not re-wrap already wrapped arguments (like multiple parameters).
+     * Test that wrapArgument() does not re-wrap already wrapped arguments (like multiple parameters).
      *
-     * @covers Lunr\Shadow\GetoptCliParser::wrap_argument
+     * @covers Lunr\Shadow\GetoptCliParser::wrapArgument
      */
     public function testWrapArgumentDoesNotRewrapArguments(): void
     {
-        $method = $this->getReflectionMethod('wrap_argument');
+        $method = $this->getReflectionMethod('wrapArgument');
 
         $value = $method->invokeArgs($this->class, [ [ 'param1', 'param2' ] ]);
 

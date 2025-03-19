@@ -74,7 +74,19 @@ class GetoptCliParser implements CliParserInterface
             return [];
         }
 
-        return array_map([ $this, 'wrap_argument' ], $raw);
+        return array_map([ $this, 'wrapArgument' ], $raw);
+    }
+
+    /**
+     * Parse error information.
+     *
+     * @deprecated Use isInvalidCommandline() instead
+     *
+     * @return bool Whether there was a parse error or not
+     */
+    public function is_invalid_commandline(): bool
+    {
+        return $this->isInvalidCommandline();
     }
 
     /**
@@ -82,7 +94,7 @@ class GetoptCliParser implements CliParserInterface
      *
      * @return bool Whether there was a parse error or not
      */
-    public function is_invalid_commandline(): bool
+    public function isInvalidCommandline(): bool
     {
         return $this->error;
     }
@@ -94,7 +106,7 @@ class GetoptCliParser implements CliParserInterface
      *
      * @return list<bool>|list<string> Wrapped argument
      */
-    protected function wrap_argument(bool|string|array $value): array
+    protected function wrapArgument(bool|string|array $value): array
     {
         if ($value === FALSE)
         {

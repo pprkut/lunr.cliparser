@@ -47,9 +47,19 @@ class GetoptCliParserBaseTest extends GetoptCliParserTestCase
      *
      * @covers Lunr\Shadow\GetoptCliParser::is_invalid_commandline
      */
-    public function testIsInvalidCommandLineReturnsError(): void
+    public function testDeprecatedIsInvalidCommandLineReturnsError(): void
     {
         $this->assertPropertyEquals('error', $this->class->is_invalid_commandline());
+    }
+
+    /**
+     * Test that isInvalidCommandline() returns the value of error.
+     *
+     * @covers Lunr\Shadow\GetoptCliParser::isInvalidCommandline
+     */
+    public function testIsInvalidCommandLineReturnsError(): void
+    {
+        $this->assertPropertyEquals('error', $this->class->isInvalidCommandline());
     }
 
 }

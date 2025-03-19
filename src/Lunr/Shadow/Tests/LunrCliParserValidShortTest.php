@@ -11,7 +11,7 @@
 namespace Lunr\Shadow\Tests;
 
 /**
- * This class contains test methods for is_valid_short() in the LunrCliParser class.
+ * This class contains test methods for isValidShort() in the LunrCliParser class.
  *
  * @covers Lunr\Shadow\LunrCliParser
  */
@@ -19,16 +19,16 @@ class LunrCliParserValidShortTest extends LunrCliParserTestCase
 {
 
     /**
-     * Test that is_valid_short() returns FALSE for an invalid parameter.
+     * Test that isValidShort() returns FALSE for an invalid parameter.
      *
      * @param mixed $param Invalid Parameter
      *
      * @dataProvider invalidParameterProvider
-     * @covers       Lunr\Shadow\LunrCliParser::is_valid_short
+     * @covers       Lunr\Shadow\LunrCliParser::isValidShort
      */
     public function testIsValidShortReturnsFalseForInvalidParameter($param): void
     {
-        $method = $this->getReflectionMethod('is_valid_short');
+        $method = $this->getReflectionMethod('isValidShort');
 
         $this->expectUserWarning('Invalid parameter given: ' . $param);
 
@@ -38,16 +38,16 @@ class LunrCliParserValidShortTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that is_valid_short() sets error to TRUE for an invalid parameter.
+     * Test that isValidShort() sets error to TRUE for an invalid parameter.
      *
      * @param mixed $param Invalid Parameter
      *
      * @dataProvider invalidParameterProvider
-     * @covers       Lunr\Shadow\LunrCliParser::is_valid_short
+     * @covers       Lunr\Shadow\LunrCliParser::isValidShort
      */
     public function testIsValidShortSetsErrorTrueForInvalidParameter($param): void
     {
-        $method = $this->getReflectionMethod('is_valid_short');
+        $method = $this->getReflectionMethod('isValidShort');
 
         $this->expectUserWarning('Invalid parameter given: ' . $param);
 
@@ -57,13 +57,13 @@ class LunrCliParserValidShortTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that is_valid_short() adds a valid parameter to the ast array.
+     * Test that isValidShort() adds a valid parameter to the ast array.
      *
-     * @covers Lunr\Shadow\LunrCliParser::is_valid_short
+     * @covers Lunr\Shadow\LunrCliParser::isValidShort
      */
     public function testIsValidShortAddsValidParameterToAst(): void
     {
-        $method = $this->getReflectionMethod('is_valid_short');
+        $method = $this->getReflectionMethod('isValidShort');
 
         $this->setReflectionPropertyValue('short', 'a');
 
@@ -76,14 +76,14 @@ class LunrCliParserValidShortTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that is_valid_short() returns FALSE for a valid parameter without arguments.
+     * Test that isValidShort() returns FALSE for a valid parameter without arguments.
      *
      * @depends Lunr\Shadow\Tests\LunrCliParserCheckArgumentTest::testCheckArgumentReturnsFalseForValidParameterWithoutArgs
-     * @covers  Lunr\Shadow\LunrCliParser::is_valid_short
+     * @covers  Lunr\Shadow\LunrCliParser::isValidShort
      */
     public function testIsValidShortReturnsFalseForValidParameterWithoutArguments(): void
     {
-        $method = $this->getReflectionMethod('is_valid_short');
+        $method = $this->getReflectionMethod('isValidShort');
 
         $this->setReflectionPropertyValue('short', 'a');
 
@@ -93,13 +93,13 @@ class LunrCliParserValidShortTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that is_valid_short() returns TRUE for a valid parameter with arguments.
+     * Test that isValidShort() returns TRUE for a valid parameter with arguments.
      *
-     * @covers Lunr\Shadow\LunrCliParser::is_valid_short
+     * @covers Lunr\Shadow\LunrCliParser::isValidShort
      */
     public function testIsValidShortReturnsTrueForValidParameterWithArguments(): void
     {
-        $method = $this->getReflectionMethod('is_valid_short');
+        $method = $this->getReflectionMethod('isValidShort');
 
         $this->setReflectionPropertyValue('args', [ 'test.php', '-b', 'arg' ]);
 

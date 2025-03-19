@@ -11,7 +11,7 @@
 namespace Lunr\Shadow\Tests;
 
 /**
- * This class contains test methods for is_valid_long() in the LunrCliParser class.
+ * This class contains test methods for isValidLong() in the LunrCliParser class.
  *
  * @covers Lunr\Shadow\LunrCliParser
  */
@@ -19,16 +19,16 @@ class LunrCliParserValidLongTest extends LunrCliParserTestCase
 {
 
     /**
-     * Test that is_valid_long() returns FALSE for an invalid parameter.
+     * Test that isValidLong() returns FALSE for an invalid parameter.
      *
      * @param mixed $param Invalid Parameter
      *
      * @dataProvider invalidParameterProvider
-     * @covers       Lunr\Shadow\LunrCliParser::is_valid_long
+     * @covers       Lunr\Shadow\LunrCliParser::isValidLong
      */
     public function testIsValidLongReturnsFalseForInvalidParameter($param): void
     {
-        $method = $this->getReflectionMethod('is_valid_long');
+        $method = $this->getReflectionMethod('isValidLong');
 
         $this->expectUserWarning('Invalid parameter given: ' . $param);
 
@@ -38,16 +38,16 @@ class LunrCliParserValidLongTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that is_valid_long() sets error to TRUE for an invalid parameter.
+     * Test that isValidLong() sets error to TRUE for an invalid parameter.
      *
      * @param mixed $param Invalid Parameter
      *
      * @dataProvider invalidParameterProvider
-     * @covers       Lunr\Shadow\LunrCliParser::is_valid_long
+     * @covers       Lunr\Shadow\LunrCliParser::isValidLong
      */
     public function testIsValidLongSetsErrorTrueForInvalidParameter($param): void
     {
-        $method = $this->getReflectionMethod('is_valid_long');
+        $method = $this->getReflectionMethod('isValidLong');
 
         $this->expectUserWarning('Invalid parameter given: ' . $param);
 
@@ -57,13 +57,13 @@ class LunrCliParserValidLongTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that is_valid_long() adds a valid parameter to the ast array.
+     * Test that isValidLong() adds a valid parameter to the ast array.
      *
-     * @covers Lunr\Shadow\LunrCliParser::is_valid_long
+     * @covers Lunr\Shadow\LunrCliParser::isValidLong
      */
     public function testIsValidLongAddsValidParameterToAst(): void
     {
-        $method = $this->getReflectionMethod('is_valid_long');
+        $method = $this->getReflectionMethod('isValidLong');
 
         $this->setReflectionPropertyValue('long', [ 'first' ]);
 
@@ -76,14 +76,14 @@ class LunrCliParserValidLongTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that is_valid_long() returns FALSE for a valid parameter without arguments.
+     * Test that isValidLong() returns FALSE for a valid parameter without arguments.
      *
      * @depends Lunr\Shadow\Tests\LunrCliParserCheckArgumentTest::testCheckArgumentReturnsFalseForValidParameterWithoutArgs
-     * @covers  Lunr\Shadow\LunrCliParser::is_valid_long
+     * @covers  Lunr\Shadow\LunrCliParser::isValidLong
      */
     public function testIsValidLongReturnsFalseForValidParameterWithoutArguments(): void
     {
-        $method = $this->getReflectionMethod('is_valid_long');
+        $method = $this->getReflectionMethod('isValidLong');
 
         $this->setReflectionPropertyValue('long', [ 'first' ]);
 
@@ -93,13 +93,13 @@ class LunrCliParserValidLongTest extends LunrCliParserTestCase
     }
 
     /**
-     * Test that is_valid_long() returns TRUE for a valid parameter with arguments.
+     * Test that isValidLong() returns TRUE for a valid parameter with arguments.
      *
-     * @covers Lunr\Shadow\LunrCliParser::is_valid_long
+     * @covers Lunr\Shadow\LunrCliParser::isValidLong
      */
     public function testIsValidLongReturnsTrueForValidParameterWithArguments(): void
     {
-        $method = $this->getReflectionMethod('is_valid_long');
+        $method = $this->getReflectionMethod('isValidLong');
 
         $this->setReflectionPropertyValue('args', [ 'test.php', '--second', 'arg' ]);
 
